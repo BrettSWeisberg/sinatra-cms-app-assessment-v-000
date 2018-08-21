@@ -43,7 +43,7 @@ class ClientController < ApplicationController
 
   get '/logout' do
     session.clear
-    redirect "/clients/login"
+    redirect "/login"
   end
 
   get '/clients/:id' do #show page
