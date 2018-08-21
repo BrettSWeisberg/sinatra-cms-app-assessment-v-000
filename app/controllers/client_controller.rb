@@ -48,7 +48,6 @@ class ClientController < ApplicationController
     #binding.pry
     if logged_in?
       @client = Client.find(session[:client_id])
-      @client_projects = @client.projects.all
       erb :'/clients/show_client'
     else
       erb :'/client/login'

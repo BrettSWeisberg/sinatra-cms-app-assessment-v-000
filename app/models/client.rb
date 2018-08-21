@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
   has_many :projects
-  has_many :files, through: :projects
+  
 
   has_secure_password
   validates :name, presence: true
