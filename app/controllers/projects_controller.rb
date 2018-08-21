@@ -51,6 +51,7 @@ class ProjectsController < ApplicationController
     if current_user.id == @project.client_id && logged_in?
       @project.delete
       redirect '/login'
+      
     end
   end
 
