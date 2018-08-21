@@ -4,6 +4,9 @@
   </form>
 </header>
 <body>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
 <h1>The Studio</h1>
   <h2> Edit Your Account Info Below:</h2>
     <form method="POST" action="/clients/<%= @client.id %>">

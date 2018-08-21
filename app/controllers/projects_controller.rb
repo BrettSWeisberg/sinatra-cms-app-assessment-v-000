@@ -41,9 +41,10 @@ class ProjectsController < ApplicationController
 
     if !params[:name].empty? && !params[:description].empty? && !params[:project_completion].empty? && logged_in? && current_user.id == @project.client_id
         @project.update(name: params[:name],description: params[:description], project_completion: params[:project_completion])
-        flash[:message] = "Successfully updated."
+
         redirect "/projects/#{@project.id}"
     else
+      flash[:message] = "Could not update."
       redirect "/projects/#{@project.id}/edit"
     end
   end

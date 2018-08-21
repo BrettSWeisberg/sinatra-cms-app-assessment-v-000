@@ -1,5 +1,7 @@
+require 'rack-flash'
 
 class ClientController < ApplicationController
+  use Rack::Flash
 
   get '/signup' do
    if !logged_in?
@@ -72,6 +74,7 @@ class ClientController < ApplicationController
       @client.save
       redirect  "/clients/#{@client.id}"
     else
+      flash[:message] = "Could not update."
       redirect "/clients/#{@client.id}/edit"
     end
   end
