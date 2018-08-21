@@ -1,3 +1,6 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
 <h1>Edit Project Below</h1>
 <form method="POST" action="/projects/<%= @project.id %>">

@@ -1,5 +1,7 @@
+require 'rack-flash'
 
 class ProjectsController < ApplicationController
+  use Rack::Flash
 
   get '/projects/new' do # create a new project
     erb :'/projects/new_project'
@@ -39,6 +41,7 @@ class ProjectsController < ApplicationController
 
     if !params[:name].empty? && !params[:description].empty? && !params[:project_completion].empty? && logged_in? && current_user.id == @project.client_id
         @project.update(name: params[:name],description: params[:description], project_completion: params[:project_completion])
+        flash[:message] = "Successfully updated."
         redirect "/projects/#{@project.id}"
     else
       redirect "/projects/#{@project.id}/edit"
@@ -51,7 +54,7 @@ class ProjectsController < ApplicationController
     if current_user.id == @project.client_id && logged_in?
       @project.delete
       redirect '/login'
-      
+
     end
   end
 

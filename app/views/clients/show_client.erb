@@ -8,11 +8,13 @@
 <body>
   <h1> <%= @client.name %> </h1>
   <h3> Current Projects </h3>
-  <%@client.projects.each |project| do  %>
+
+  <% @client.projects.each do |project|   %>
   <ul>
-    <li>project.name<li>
+    <li> <a href=/projects/<%= project.id %> ><%=project.name %></a></li>
     </ul>
       <% end %>
+
   <form  action='/projects/new'>
     <input type="submit" value="Create a new project">
   </form>
