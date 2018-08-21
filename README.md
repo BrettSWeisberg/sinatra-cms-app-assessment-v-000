@@ -1,5 +1,10 @@
 
-Description:
+Description:The Sinatra Project involved creating an MVC application (Model, View, Controller). The models I created were based on the client/project relationship. The user is also known as the “client” has many projects. The project belongs to only one user/client. The client has in the database fields such as email and password. The project has a completion date, description, and name logged in the database.
+
+Instructions:
+  1) Run git pull in your terminal
+  2) Run shotgun
+  3) In browser begin to create clients and projects
 
 Copyright 2018
 
