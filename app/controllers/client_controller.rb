@@ -12,11 +12,11 @@ class ClientController < ApplicationController
  end
 
   post '/signup' do
-  
+
     if !params[:name].empty? && !params[:email].empty? && !params[:password].empty? && Client.find_by(name: params[:name]) == nil
         client = Client.create(name: params[:name], email: params[:email], password: params[:password])
         session[:client_id] = client.id
-        #client.save
+        
         redirect "/clients/:id" # if sign up successful take them to the show page for all proejcts
       else
         redirect "/signup" # if sign up not successful take them back to sign up
