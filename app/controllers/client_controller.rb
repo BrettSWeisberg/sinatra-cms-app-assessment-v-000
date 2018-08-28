@@ -71,7 +71,7 @@ class ClientController < ApplicationController
       @client = Client.find(session[:client_id])
     if !params[:name].empty? && !params[:email].empty? && !params[:password].empty? && logged_in? && current_user.id == @client.id
       @client.update(name: params[:name], email: params[:email], password: params[:password])
-      @client.save
+      
       redirect  "/clients/#{@client.id}"
     else
       flash[:message] = "Could not update."
