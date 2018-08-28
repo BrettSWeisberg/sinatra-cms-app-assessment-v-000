@@ -12,11 +12,11 @@ class ClientController < ApplicationController
  end
 
   post '/signup' do
-  #  binding.pry
-    if !params[:name].empty? && !params[:email].empty? && !params[:password].empty?
+
+    if !params[:name].empty? && !params[:email].empty? && !params[:password].empty? && Client.find_by(name: params[:name]) == nil
         client = Client.create(name: params[:name], email: params[:email], password: params[:password])
         session[:client_id] = client.id
-        client.save
+
         redirect "/clients/:id" # if sign up successful take them to the show page for all proejcts
       else
         redirect "/signup" # if sign up not successful take them back to sign up
@@ -71,7 +71,7 @@ class ClientController < ApplicationController
       @client = Client.find(session[:client_id])
     if !params[:name].empty? && !params[:email].empty? && !params[:password].empty? && logged_in? && current_user.id == @client.id
       @client.update(name: params[:name], email: params[:email], password: params[:password])
-      @client.save
+      
       redirect  "/clients/#{@client.id}"
     else
       flash[:message] = "Could not update."
