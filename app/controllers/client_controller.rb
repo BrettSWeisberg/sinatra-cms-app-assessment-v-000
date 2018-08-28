@@ -12,7 +12,7 @@ class ClientController < ApplicationController
  end
 
   post '/signup' do
-  #  binding.pry
+    binding.pry
     if !params[:name].empty? && !params[:email].empty? && !params[:password].empty? && Client.find_by(name: name) == nil
         client = Client.create(name: params[:name], email: params[:email], password: params[:password])
         session[:client_id] = client.id
